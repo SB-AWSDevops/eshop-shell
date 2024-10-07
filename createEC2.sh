@@ -12,9 +12,9 @@ for instance in ${instances[@]}; do
     echo "Creating instance for : $instance with instance type : $instance_type" 
 done
 #retrieve the default values:
-ami_id=$(aws ec2 describe-images --owners amazon --filters "Name=platform,Values=linux" --query "Images[?Name=='amzn2-ami-hvm-*-x86_64-gp2'].ImageId" --output text --region <us-east-1>)
-subnet_id=$(aws ec2 describe-subnets --filters Name=default-for-az,Values=true --query 'Subnets[0].SubnetId' --output text --region <us-east-1>)
-sg_id=$(aws ec2 describe-security-groups --filters Name=group-name,Values=default --query 'SecurityGroups[0].GroupId' --output text --region <us-east-1>)
+ami_id=$(aws ec2 describe-images --owners amazon --filters "Name=platform,Values=linux" --query "Images[?Name=='amzn2-ami-hvm-*-x86_64-gp2'].ImageId" --output text --region us-east-1)
+subnet_id=$(aws ec2 describe-subnets --filters Name=default-for-az,Values=true --query 'Subnets[0].SubnetId' --output text --region us-east-1)
+sg_id=$(aws ec2 describe-security-groups --filters Name=group-name,Values=default --query 'SecurityGroups[0].GroupId' --output text --region us-east-1)
 
 # use the values to launch the instance:
 aws ec2 run-instances \
