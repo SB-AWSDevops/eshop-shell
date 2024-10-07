@@ -9,7 +9,6 @@ for instance in ${instances[@]}; do
     else
         instance_type="t3.micro"
     fi
-    echo "Creating instance for : $instance with instance type : $instance_type" 
 done
 #retrieve the default values:
 ami_id=$(aws ec2 describe-images --owners amazon --filters "Name=platform,Values=linux" --query "Images[?Name=='amzn2-ami-hvm-*-x86_64-gp2'].ImageId" --output text --region us-east-1)
